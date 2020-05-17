@@ -2,8 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:settings_ui/settings_ui.dart';
 
-import 'colors.dart';
-
 class CupertinoSettingsSection extends StatelessWidget {
   const CupertinoSettingsSection(
     this.items, {
@@ -55,16 +53,12 @@ class CupertinoSettingsSection extends StatelessWidget {
     columnChildren.add(
       Container(
         decoration: BoxDecoration(
-          color: Theme.of(context).brightness == Brightness.light
-              ? CupertinoColors.white
-              : iosTileDarkColor,
+          color: Theme.of(context).colorScheme.surface,
           border: Border(
             top: const BorderSide(
-              color: borderColor,
               width: 0.3,
             ),
             bottom: const BorderSide(
-              color: borderColor,
               width: 0.3,
             ),
           ),
@@ -79,7 +73,6 @@ class CupertinoSettingsSection extends StatelessWidget {
     if (footer != null) {
       columnChildren.add(DefaultTextStyle(
         style: TextStyle(
-          color: groupSubtitle,
           fontSize: 13.0,
           letterSpacing: -0.08,
         ),

@@ -3,8 +3,6 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'colors.dart';
-
 enum SettingsItemType {
   toggle,
   modal,
@@ -47,11 +45,7 @@ class CupertinoSettingsItemState extends State<CupertinoSettingsItem> {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
-    final ListTileTheme tileTheme = ListTileTheme.of(context);
     IconThemeData iconThemeData;
-    if (widget.leading != null)
-      iconThemeData = IconThemeData(color: _iconColor(theme, tileTheme));
 
     Widget leadingIcon;
     if (widget.leading != null) {
@@ -161,7 +155,6 @@ class CupertinoSettingsItemState extends State<CupertinoSettingsItem> {
               ),
               child: Icon(
                 CupertinoIcons.forward,
-                color: mediumGrayColor,
                 size: 21.0,
               ),
             ),
@@ -203,43 +196,11 @@ class CupertinoSettingsItemState extends State<CupertinoSettingsItem> {
         });
       },
       child: Container(
-        color: calculateBackgroundColor(context),
         height: widget.subtitle == null ? 44.0 : 57.0,
         child: Row(
           children: rowChildren,
         ),
       ),
     );
-  }
-
-  Color calculateBackgroundColor(BuildContext context) {
-    if (Theme.of(context).brightness == Brightness.light) {
-      if (pressed) {
-        return iosPressedTileColorLight;
-      } else {
-        return Colors.white;
-      }
-    } else {
-      if (pressed) {
-        return iosPressedTileColorDark;
-      } else {
-        return iosTileDarkColor;
-      }
-    }
-  }
-
-  Color _iconColor(ThemeData theme, ListTileTheme tileTheme) {
-    if (tileTheme?.selectedColor != null) return tileTheme.selectedColor;
-
-    if (tileTheme?.iconColor != null) return tileTheme.iconColor;
-
-    switch (theme.brightness) {
-      case Brightness.light:
-        return Colors.black45;
-      case Brightness.dark:
-        return null; // null - use current icon theme color
-    }
-    assert(theme.brightness != null);
-    return null;
   }
 }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:settings_ui/src/colors.dart';
 import 'package:settings_ui/src/settings_section.dart';
 
 class SettingsList extends StatelessWidget {
@@ -10,9 +9,7 @@ class SettingsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Theme.of(context).brightness == Brightness.light
-          ? backgroundGray
-          : Colors.black,
+      color: Theme.of(context).scaffoldBackgroundColor,
       child: ListView.builder(
         itemCount: sections.length,
         itemBuilder: (context, index) {
