@@ -18,21 +18,23 @@ class CupertinoSettingsSection extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<Widget> columnChildren = [];
     if (header != null) {
-      columnChildren.add(DefaultTextStyle(
-        style: TextStyle(
-          color: CupertinoColors.inactiveGray,
-          fontSize: 13.5,
-          letterSpacing: -0.5,
-        ),
-        child: Padding(
-          padding: EdgeInsets.only(
-            left: 15.0,
-            right: 15.0,
-            bottom: 6.0,
+      columnChildren.add(
+        DefaultTextStyle(
+          style: TextStyle(
+            color: CupertinoColors.inactiveGray,
+            fontSize: 13.5,
+            letterSpacing: -0.5,
           ),
-          child: header,
+          child: Padding(
+            padding: EdgeInsets.only(
+              left: 15.0,
+              right: 15.0,
+              bottom: 6.0,
+            ),
+            child: header,
+          ),
         ),
-      ));
+      );
     }
 
     List<Widget> itemsWithDividers = [];
@@ -40,20 +42,26 @@ class CupertinoSettingsSection extends StatelessWidget {
       final leftPadding =
           (items[i] as SettingsTile).leading == null ? 15.0 : 54.0;
       if (i < items.length - 1) {
-        itemsWithDividers.add(items[i]);
-        itemsWithDividers.add(Divider(
-          height: 0.3,
-          indent: leftPadding,
-        ));
+        itemsWithDividers.add(
+          items[i],
+        );
+        itemsWithDividers.add(
+          Divider(
+            height: 0.3,
+            indent: leftPadding,
+          ),
+        );
       } else {
-        itemsWithDividers.add(items[i]);
+        itemsWithDividers.add(
+          items[i],
+        );
       }
     }
 
     columnChildren.add(
       Container(
         decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.surface,
+          color: Theme.of(context).colorScheme.onSurface,
           border: Border(
             top: const BorderSide(
               width: 0.3,
@@ -71,20 +79,22 @@ class CupertinoSettingsSection extends StatelessWidget {
     );
 
     if (footer != null) {
-      columnChildren.add(DefaultTextStyle(
-        style: TextStyle(
-          fontSize: 13.0,
-          letterSpacing: -0.08,
-        ),
-        child: Padding(
-          padding: EdgeInsets.only(
-            left: 15.0,
-            right: 15.0,
-            top: 7.5,
+      columnChildren.add(
+        DefaultTextStyle(
+          style: TextStyle(
+            fontSize: 13.0,
+            letterSpacing: -0.08,
           ),
-          child: footer,
+          child: Padding(
+            padding: EdgeInsets.only(
+              left: 15.0,
+              right: 15.0,
+              top: 7.5,
+            ),
+            child: footer,
+          ),
         ),
-      ));
+      );
     }
 
     return Padding(
